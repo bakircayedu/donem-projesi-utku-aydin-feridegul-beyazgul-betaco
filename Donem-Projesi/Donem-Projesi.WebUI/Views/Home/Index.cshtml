@@ -1,0 +1,21 @@
+﻿@using Donem_Projesi.WebUI.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3" style=" color: floralwhite">Tarzını Keşfet!</h1>
+        <p class="lead" style=" color: floralwhite">Kendi tarzını yansıtabileceğin birçok ürün içerisinden istediğini seç.</p>
+        <hr class="my-4">
+        <p style=" color: floralwhite">Dünyaya farklı bakanlar için Betaco ile dünyaya farklı görün.</p>
+        <p class="lead" style=" color: floralwhite">
+            Betaco tüm ürünleriyle sizinle!
+        </p>
+    </div>
+</div>
+
+
+<div class="container pb-5">
+    @Html.Partial("_ProductList", Model)
+</div>

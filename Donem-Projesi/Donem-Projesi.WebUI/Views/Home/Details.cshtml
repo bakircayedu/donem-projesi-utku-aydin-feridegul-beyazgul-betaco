@@ -1,0 +1,86 @@
+﻿@using Donem_Projesi.WebUI.Entity;
+@model Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<div id="product-details" class="container pb-5">
+    <div class="row">
+
+        <div class="col-md-6">
+            <img src="/Upload/@Model.Image" class="img-fluid rounded ">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (Model.Stock != 0)
+                    {
+                        <span class="badge badge-primary">Stokta</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Stokta Yok</span>
+                    }
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div id="description" class="readmore">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h4 id="product-price">@Model.Price TL</h4>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        @Html.HiddenFor(i => i.Id)
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            Sepete Ekle
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Ürün Açıklaması</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-expanded="true">Ödeme Yöntemi</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                        <p>@Model.Description</p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                        <p>Ürünlerimiz kapıda ödeme yöntemi ile ödenecektir. Kargo firmasının anlaşmalı olduğu bankaların kartları ile ödemelerinizi yapabilirsiniz. Ödemesi yapılmayan ürünler tarafımıza tekrar gönderilerek ürünün iadesi alınacaktır. Paketi açılmış veya üzerinde herhangi bir kusur gördüğünüz ürünleri lütfen teslim almayınız! İade işlemlerinizi kargo teslimini yapan firmaya giderek "BETACO" kodunu kullanarak yapabilirsiniz. İadesi yapılan ürünlerin incelemesi tamamlandıktan sonra "5" iş günü içerisinde kartınıza para transferi gerçekleşecektir. İyi günler dileriz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
